@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você decide o futuro da IA</title>
+    <style>
+        /* Importação da fonte para um visual moderno */
+        @import url('https://googleapis.com');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19; /* Fundo escuro idêntico ao do Figma */
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 580px;
+            width: 100%;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00d2ff; /* Tom de azul brilhante do título */
+            margin-bottom: 35px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Botão Superior (Selecionado com a borda amarela) */
+        .btn-scary {
+            background-color: #111827;
+            color: #e2e8f0;
+            border: 3px solid #f59e0b; /* Borda dourada/amarela de seleção */
+        }
+
+        .btn-scary:hover {
+            background-color: #1f2937;
+        }
+
+        /* Botão Inferior (Azul Sólido) */
+        .btn-wonderful {
+            background-color: #00d2ff;
+            color: #0b0f19;
+            border: none;
+        }
+
+        .btn-wonderful:hover {
+            background-color: #00b4db;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Você decide o<br>futuro da IA</h1>
+        
+        <p>
+            Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?
+        </p>
+
+        <div class="button-group">
+            <button class="btn btn-scary">Isso é assustador!</button>
+            <button class="btn btn-wonderful">Isso é maravilhoso!</button>
+        </div>
+    </div>
+
+</body>
+</html>
+
