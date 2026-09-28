@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senha</title>
+    <style>
+        @import url('https://googleapis.com');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Cabeçalho com o Título e Ícone Emulado */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .key-icon {
+            font-size: 2.5rem;
+        }
+
+        .title {
+            font-family: serif; /* Estilo clássico/serifado do logo original */
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555555;
+            margin-bottom: 40px;
+        }
+
+        /* Grid de Configurações */
+        .grid-config {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #444444;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        /* Grupo de botões seletores opcionais */
+        .options-group {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .btn-opt {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            color: #777777;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-opt.active {
+            background-color: #e9ecef;
+            color: #333333;
+            font-weight: 600;
+        }
+
+        /* Inputs de Texto/Número */
+        .input-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-block label {
+            font-size: 0.95rem;
+            color: #444444;
+            text-align: center;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            background-color: #ffffff;
+        }
+
+        /* Campo de Resultado Grande */
+        .result-container {
+            margin: 30px 0;
+        }
+
+        .result-field {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            background-color: #ffffff;
+            font-size: 1.1rem;
+            padding: 10px;
+        }
+
+        /* Botão de Ação Principal */
+        .btn-generate {
+            background-color: #e0e0e0;
+            color: #333333;
+            border: 1px solid #b5b5b5;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+        }
+
+        .btn-generate:hover {
+            background-color: #d5d5d5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Cabeçalho -->
+        <div class="header-container">
+            <span class="key-icon">🔑</span>
+            <div class="title">
+                Gerador de<br>Senha
+            </div>
+        </div>
+        
+        <div class="subtitle">
+            O Gerador de Senha gera senhas aleatórias de qualquer tamanho.
+        </div>
+
+        <!-- Formulário / Controles -->
+        <div class="grid-config">
+            
+            <!-- Coluna Esquerda: Primeiro Caracter -->
+            <div>
+                <div class="section-title">Primeiro Caracter</div>
+                <div class="options-group">
+                    <button class="btn-opt">Numeral</button>
+                    <button class="btn-opt active">Maiúscula</button>
+                    <button class="btn-opt">Minúscula</button>
+                    <button class="btn-opt">Outros</button>
+                </div>
+                <div class="input-block">
+                    <label for="tamanho">Tamanho</label>
+                    <input type="text" id="tamanho" class="input-field" value="8">
+                </div>
+            </div>
+
+            <!-- Coluna Direita: Outros Caracteres -->
+            <div>
+                <div class="section-title">Outros Caracteres</div>
+                <div class="options-group">
+                    <button class="btn-opt">Numeral</button>
+                    <button class="btn-opt">Maiúscula</button>
+                    <button class="btn-opt">Minúscula</button>
+                    <button class="btn-opt">Outros</button>
+                </div>
+                <div class="input-block">
+                    <label for="outros">Outros Caracteres</label>
+                    <input type="text" id="outros" class="input-field">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Campo onde a senha gerada aparece -->
+        <div class="result-container">
+            <input type="text" readonly class="result-field">
+        </div>
+
+        <!-- Botão Gerar Senha -->
+        <button class="btn-generate">Gerar Senha</button>
+    </div>
+
+</body>
+</html>
+
